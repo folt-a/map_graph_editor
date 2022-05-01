@@ -25,9 +25,9 @@ size = Vector2( 16, 16 )
 [sub_resource type="StyleBoxEmpty" id=8]
 
 [node name="CommentNode" type="GraphNode"]
-margin_right = 400.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 400, 200 )
+margin_right = 372.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 50, 50 )
 custom_styles/commentfocus = SubResource( 6 )
 custom_styles/comment = SubResource( 7 )
 comment = true
@@ -38,41 +38,36 @@ slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 384.0
+margin_right = 356.0
 margin_bottom = 184.0
 rect_min_size = Vector2( 340, 160 )
 custom_constants/margin_right = -10
 
 [node name="HBox" type="HBoxContainer" parent="MarginContainer"]
-margin_right = 378.0
+margin_right = 350.0
 margin_bottom = 160.0
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBox"]
-margin_right = 20.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 20, 28 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = SubResource( 10 )
 stretch_mode = 4
 
 [node name="TextBox" type="TextEdit" parent="MarginContainer/HBox"]
-margin_left = 24.0
-margin_right = 378.0
+margin_left = 36.0
+margin_right = 350.0
 margin_bottom = 160.0
 size_flags_horizontal = 3
 custom_styles/focus = ExtResource( 3 )
 custom_styles/normal = SubResource( 8 )
-text = "Comment 
-
- Use the handle to resize"
+text = "Comment"
 wrap_enabled = true
 
 [connection signal="gui_input" from="MarginContainer/HBox/Icon" to="." method="_on_Icon_gui_input"]

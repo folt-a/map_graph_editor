@@ -16,8 +16,13 @@ var dirty = false
 
 var add_panel: = false
 var add_comment: = false
+var add_comment_large: = false
 
 var undo_redo:UndoRedo
+
+var button_font = preload("res://addons/project_map/fonts/map_button_font.tres")
+var comment_font = preload("res://addons/project_map/fonts/map_comment_font.tres")
+var comment_large_font = preload("res://addons/project_map/fonts/map_comment_large_font.tres")
 
 func _enter_tree():
 	
@@ -28,16 +33,34 @@ func _enter_tree():
 	var hbox = get_zoom_hbox()
 	
 	#add group button
-	var button = Button.new()
-	button.text = "Add Group"
-	hbox.add_child(button)
-	button.connect("pressed", self, "_on_add_panel")
+	var group_button = Button.new()
+	group_button.icon = get_icon("WindowDialog", "EditorIcons")
+	group_button.add_font_override("font",button_font)
+	hbox.add_child(group_button)
+	group_button.connect("pressed", self, "_on_add_panel")
 	
 	#add comment button
-	button = Button.new()
-	button.text = "Add Comment"
-	hbox.add_child(button)
-	button.connect("pressed", self, "_on_add_comment")
+	var comment_button = Button.new()
+	comment_button.icon = get_icon("MultiLine", "EditorIcons")
+	comment_button.add_font_override("font",button_font)
+	hbox.add_child(comment_button)
+	comment_button.connect("pressed", self, "_on_add_comment")
+	
+	#add comment button
+	var comment_large_button = Button.new()
+	comment_large_button.icon = get_icon("MultiLine", "EditorIcons")
+	comment_large_button.add_font_override("font",button_font)
+	hbox.add_child(comment_large_button)
+	comment_large_button.connect("pressed", self, "_on_add_comment_large")
+	
+	if OS.get_locale_language() == "ja":
+		group_button.text = "グループ追加"
+		comment_button.text = "コメント追加"
+		comment_large_button.text = "コメント(大)追加"
+	else:
+		group_button.text = "Add Group"
+		comment_button.text = "Add Comment"
+		comment_large_button.text = "Add Comment Large"
 	
 	var interface = get_tree().get_meta("__editor_interface")
 	undo_redo = get_tree().get_meta("__undo_redo")
@@ -60,14 +83,17 @@ func snap(pos:Vector2):
 
 
 func _on_add_panel():
-	
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	add_panel = true
 
 
 func _on_add_comment():
-	
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	add_comment = true
 
+func _on_add_comment_large():
+	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	add_comment_large = true
 
 func _ready():
 	
@@ -80,7 +106,31 @@ func _ready():
 		
 		if node is group_node_script:
 			node.set_children()
-	print(resource_previewer)
+	var hbox = get_zoom_hbox()
+	var hbox_children = hbox.get_children()
+	hbox_children[1].icon = get_icon("ZoomLess", "EditorIcons")
+	hbox_children[2].icon = get_icon("ZoomReset", "EditorIcons")
+	hbox_children[3].icon = get_icon("ZoomMore", "EditorIcons")
+	hbox_children[4].icon = get_icon("SnapGrid", "EditorIcons")
+	hbox_children[5].visible = false
+	hbox_children[6].icon = get_icon("GridMinimap", "EditorIcons")
+	hbox_children[1].rect_size = Vector2(42,36)
+	hbox_children[2].rect_size = Vector2(42,36)
+	hbox_children[3].rect_size = Vector2(42,36)
+	hbox_children[4].rect_size = Vector2(42,36)
+	hbox_children[6].rect_min_size = Vector2(42,36)
+	hbox_children[1].rect_min_size = Vector2(42,36)
+	hbox_children[2].rect_min_size = Vector2(42,36)
+	hbox_children[3].rect_min_size = Vector2(42,36)
+	hbox_children[4].rect_min_size = Vector2(42,36)
+	hbox_children[6].rect_min_size = Vector2(42,36)
+	hbox_children[1].expand_icon = true
+	hbox_children[2].expand_icon = true
+	hbox_children[3].expand_icon = true
+	hbox_children[4].expand_icon = true
+	hbox_children[6].expand_icon = true
+
+	
 
 func _on_file_removed(file_path):
 	
@@ -286,7 +336,7 @@ func _on_end_node_move():
 			
 	undo_redo.commit_action()
 
-func _add_common_node(node_type, pos, node_name):
+func _add_common_node(node_type, pos, node_name) -> Node2D:
 	
 	var node = add_node(node_type, pos)
 	node.init()
@@ -298,6 +348,7 @@ func _add_common_node(node_type, pos, node_name):
 	undo_redo.add_do_method(node, "show")
 	undo_redo.add_undo_method(node, "hide")
 	undo_redo.commit_action()
+	return node
 
 func _on_ProjectMap_gui_input(event):
 	
@@ -310,14 +361,21 @@ func _on_ProjectMap_gui_input(event):
 			#create group node
 			if add_panel:
 				add_panel = false
-			
+				mouse_default_cursor_shape = Control.CURSOR_ARROW
 				_add_common_node(group_node, event.position, "group")
 				
 			#create comment node
 			elif add_comment:
 				add_comment = false
+				mouse_default_cursor_shape = Control.CURSOR_ARROW
+				var node = _add_common_node(comment_node, event.position, "comment")
+				node.change_text_font(comment_font)
 				
-				_add_common_node(comment_node, event.position, "comment")
+			elif add_comment_large:
+				add_comment_large = false
+				mouse_default_cursor_shape = Control.CURSOR_ARROW
+				var node = _add_common_node(comment_node, event.position, "comment")
+				node.change_text_font(comment_large_font)
 				
 		elif event.button_index == BUTTON_WHEEL_UP:
 			
@@ -343,15 +401,18 @@ func _on_ProjectMap_disconnection_request(from, from_slot, to, to_slot):
 onready var _right_click_line:Line2D = $Line2D
 var _is_right_dragging:bool = false
 func _input(event):
+	if !visible : return
 	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT and event.pressed:
 		_is_right_dragging = true
+		$Line2D/AnimationPlayer.play("blink")
 	elif event is InputEventMouseButton and event.button_index == BUTTON_RIGHT:
 		_is_right_dragging = false
+		$Line2D/AnimationPlayer.play("RESET")
 		var through_nodes = []
 		var through_points = []
 		for graphnode in get_children():
 #			var graphnode:GraphNode
-			if graphnode.has_meta("map"):
+			if graphnode.has_meta("map") and graphnode.visible:
 #				選択中GraphNodeのポリゴンを取得
 				var poly_lt = graphnode.rect_position
 				var poly_rt = Vector2(poly_lt.x + graphnode.get_rect().size.x, poly_lt.y)
@@ -389,3 +450,8 @@ func _process(delta):
 	if _is_right_dragging:
 		_right_click_line.add_point(get_local_mouse_position())
 	
+	
+func show():
+	for graphnode in get_children():
+		if graphnode.has_meta("map") and graphnode.visible:
+			graphnode.update_thumbnail()

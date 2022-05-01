@@ -3,7 +3,7 @@ extends "res://addons/project_map/pm_common_node.gd"
 
 var icon = NodePath("MarginContainer/HBox/Icon")
 
-export(String) var comment_text = "Comment \n\n Use the handle to resize"
+export(String) var comment_text = "Comment"
 export(Vector2) var comment_rect = Vector2(400, 200)
 
 onready var text_node = get_node("MarginContainer/HBox/TextBox")
@@ -91,3 +91,5 @@ func _on_TextBox_focus_exited():
 func _on_TextBox_focus_entered():
 	last_text = text_node.text
 
+func change_text_font(d_font:DynamicFont):
+	$MarginContainer/HBox/TextBox.add_font_override("font", d_font)

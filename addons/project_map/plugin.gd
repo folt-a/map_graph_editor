@@ -50,6 +50,8 @@ func get_plugin_icon():
 
 func make_visible(visible):
 	project_map.visible = visible
+	if visible:
+		project_map.show()
 
 
 func apply_changes():

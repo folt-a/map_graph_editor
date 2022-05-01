@@ -1,9 +1,9 @@
 tool
-extends HBoxContainer
+extends VBoxContainer
 
 signal resource_activated(pm_resource)
 
-enum {TYPE_2D, TYPE_3D, TYPE_SCRIPT, TYPE_OTHER, TYPE_DIR, TYPE_MAP}
+enum {TYPE_2D, TYPE_3D, TYPE_SCRIPT, TYPE_OTHER, TYPE_DIR, TYPE_MAP,TYPE_TEXTURE}
 
 var resource_path
 var resource_type
@@ -19,10 +19,10 @@ func _ready():
 
 func set_icon(icon_class):
 	
-	$Icon.texture = get_icon(icon_class, "EditorIcons")
+	$HB/Icon.texture = get_icon(icon_class, "EditorIcons")
 	
 	if icon_class == "Folder":
-		$Icon.modulate = Color("83a3d2")
+		$HB/Icon.modulate = Color("83a3d2")
 
 
 func set_name(resource_path):
@@ -34,7 +34,7 @@ func set_name(resource_path):
 		if resource_name.find("::") >= 0:
 			resource_name = "built-in script"
 			
-	$Button.text = resource_name
+	$HB/Button.text = resource_name
 
 
 func init(resource_path):
@@ -84,7 +84,10 @@ func get_resource_info(resource_path):
 			
 		elif resource is Resource:
 			
-			if resource is Script:
+			if resource is StreamTexture:
+				resource_type = TYPE_TEXTURE
+				icon_class = resource.get_class()
+			elif resource is Script:
 				
 				resource_type = TYPE_SCRIPT
 				icon_class = "Script"
