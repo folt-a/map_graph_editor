@@ -1,0 +1,25 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "btn_show"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.8, -0.4, -0.0486106, 0.0428866, 0.236983, 1.09624, -0.0256039, 0.00507891, 0.039046, 0, 1, -0.0393353, -0.00195563, 0.2, -0.0138065 ),
+"times": PoolRealArray( 0, 0.123539, 0.2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rect_scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.8, -0.4, -0.0486106, 0.0428866, 0.236983, 1.09624, -0.0256039, 0.00507891, 0.039046, 0, 1, -0.0393353, -0.00195563, 0.2, -0.0138065 ),
+"times": PoolRealArray( 0, 0.123539, 0.2 )
+}

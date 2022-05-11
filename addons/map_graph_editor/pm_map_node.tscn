@@ -1,0 +1,280 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://addons/map_graph_editor/pm_map_node.gd" type="Script" id=1]
+[ext_resource path="res://addons/map_graph_editor/pm_resource.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/map_graph_editor/node_selected.stylebox" type="StyleBox" id=3]
+[ext_resource path="res://addons/map_graph_editor/node.stylebox" type="StyleBox" id=4]
+[ext_resource path="res://addons/map_graph_editor/btn_show.tres" type="Animation" id=5]
+[ext_resource path="res://addons/map_graph_editor/fonts/map_button_font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://addons/map_graph_editor/map_thumbnail_creator.gd" type="Script" id=8]
+[ext_resource path="res://tile/navigation.png" type="Texture" id=9]
+[ext_resource path="res://addons/map_graph_editor/fonts/map_label_font.tres" type="DynamicFont" id=10]
+[ext_resource path="res://addons/map_graph_editor/fonts/ZenMaruGothic-Bold-Subset.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://addons/map_graph_editor/map_portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/map_graph_editor/image/port.png" type="Texture" id=13]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0.117647 )
+
+[sub_resource type="Image" id=5]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=6]
+flags = 4
+flags = 4
+image = SubResource( 5 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="FileNode" type="GraphNode"]
+margin_right = 224.0
+margin_bottom = 241.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 13 )
+custom_styles/frame = ExtResource( 4 )
+custom_styles/selectedframe = ExtResource( 3 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"map": ""
+}
+
+[node name="VB" type="VBoxContainer" parent="."]
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 223.0
+margin_bottom = 190.0
+custom_constants/separation = 0
+
+[node name="Resource" parent="VB" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 222.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="Script" parent="VB" instance=ExtResource( 2 )]
+visible = false
+margin_left = 0.0
+margin_top = 28.0
+margin_right = 94.0
+margin_bottom = 52.0
+
+[node name="HSeparatorMap" type="HSeparator" parent="VB"]
+margin_top = 32.0
+margin_right = 222.0
+margin_bottom = 32.0
+custom_constants/separation = -1
+
+[node name="MapHeader" type="PanelContainer" parent="VB"]
+margin_top = 32.0
+margin_right = 222.0
+margin_bottom = 118.0
+mouse_filter = 1
+custom_styles/panel = SubResource( 2 )
+
+[node name="MC" type="MarginContainer" parent="VB/MapHeader"]
+margin_right = 222.0
+margin_bottom = 86.0
+mouse_filter = 1
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+
+[node name="VB" type="VBoxContainer" parent="VB/MapHeader/MC"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 220.0
+margin_bottom = 84.0
+
+[node name="MapTitle" type="LineEdit" parent="VB/MapHeader/MC/VB"]
+margin_right = 218.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 24 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 7 )
+context_menu_enabled = false
+placeholder_text = "map title"
+
+[node name="MapHeader_1" type="HBoxContainer" parent="VB/MapHeader/MC/VB"]
+margin_top = 32.0
+margin_right = 218.0
+margin_bottom = 54.0
+
+[node name="TscnJumpButton" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_right = 28.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="VisibleToggleMemo" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="TextureUpdateButton" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="TextureZoomOutButton" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_left = 96.0
+margin_right = 124.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="TextureZoomResetButton" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_left = 128.0
+margin_right = 156.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="TextureZoomInButton" type="Button" parent="VB/MapHeader/MC/VB/MapHeader_1"]
+margin_left = 160.0
+margin_right = 188.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="MapHeader_2" type="CenterContainer" parent="VB/MapHeader/MC/VB"]
+margin_top = 58.0
+margin_right = 218.0
+margin_bottom = 82.0
+mouse_filter = 1
+
+[node name="MapThumbnail" type="TextureRect" parent="VB/MapHeader/MC/VB/MapHeader_2"]
+margin_left = 56.0
+margin_right = 162.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 106, 24 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="MapMemo" type="TextEdit" parent="VB"]
+margin_top = 118.0
+margin_right = 222.0
+margin_bottom = 142.0
+rect_min_size = Vector2( 52, 24 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+highlight_current_line = true
+show_line_numbers = true
+draw_tabs = true
+draw_spaces = true
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+
+[node name="MapDataHeader" type="HBoxContainer" parent="VB"]
+margin_top = 142.0
+margin_right = 222.0
+margin_bottom = 164.0
+
+[node name="Label" type="Label" parent="VB/MapDataHeader"]
+margin_right = 98.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 4 )
+text = "カスタムデータ"
+
+[node name="AddDataButton" type="Button" parent="VB/MapDataHeader"]
+margin_left = 102.0
+margin_right = 130.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="RemoveDataButton" type="Button" parent="VB/MapDataHeader"]
+margin_left = 134.0
+margin_right = 162.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="VBCustomData" type="VBoxContainer" parent="VB"]
+margin_top = 164.0
+margin_right = 222.0
+margin_bottom = 164.0
+
+[node name="MapFooter" type="HBoxContainer" parent="VB"]
+margin_top = 164.0
+margin_right = 222.0
+margin_bottom = 186.0
+
+[node name="Label" type="Label" parent="VB/MapFooter"]
+margin_right = 56.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 10 )
+text = "ポータル"
+
+[node name="AddPortalButton" type="Button" parent="VB/MapFooter"]
+margin_left = 60.0
+margin_right = 88.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="RemovePortalButton" type="Button" parent="VB/MapFooter"]
+margin_left = 92.0
+margin_right = 120.0
+margin_bottom = 22.0
+icon = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/btn_show = ExtResource( 5 )
+
+[node name="ThumbnailCreator" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="MapPortal_0" parent="." instance=ExtResource( 12 )]
+margin_top = 191.0
+margin_right = 223.0
+margin_bottom = 215.0
+
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/TscnJumpButton" to="." method="_on_TscnJumpButton_pressed"]
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/VisibleToggleMemo" to="." method="_on_VisibleToggleMemo_pressed"]
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/TextureUpdateButton" to="." method="_on_TextureUpdateButton_pressed"]
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/TextureZoomOutButton" to="." method="_on_TextureZoomOutButton_pressed"]
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/TextureZoomResetButton" to="." method="_on_TextureZoomResetButton_pressed"]
+[connection signal="pressed" from="VB/MapHeader/MC/VB/MapHeader_1/TextureZoomInButton" to="." method="_on_TextureZoomInButton_pressed"]
+[connection signal="pressed" from="VB/MapDataHeader/AddDataButton" to="." method="_on_AddDataButton_pressed"]
+[connection signal="pressed" from="VB/MapDataHeader/RemoveDataButton" to="." method="_on_RemoveDataButton_pressed"]
+[connection signal="pressed" from="VB/MapFooter/AddPortalButton" to="." method="_on_AddPortalButton_pressed"]
+[connection signal="pressed" from="VB/MapFooter/RemovePortalButton" to="." method="_on_RemovePortalButton_pressed"]

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "GraphNode",
 "class": "CommonNode",
 "language": "GDScript",
-"path": "res://addons/project_map/pm_common_node.gd"
+"path": "res://addons/map_graph_editor/pm_common_node.gd"
 } ]
 _global_script_class_icons={
 "CommonNode": ""
@@ -25,7 +25,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/project_map/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/map_graph_editor/plugin.cfg" )
 
 [physics]
 

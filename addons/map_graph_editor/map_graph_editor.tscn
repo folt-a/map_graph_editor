@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/map_graph_editor/map_setting.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/map_graph_editor/map_graph_editor.gd" type="Script" id=2]
+[ext_resource path="res://addons/map_graph_editor/fonts/ZenMaruGothic-Bold-Subset.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.2, 0.231373, 0.309804, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:default_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:default_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.666667, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:default_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:default_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "blink"
+length = 2.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:default_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.988235, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 1, 1.5, 2 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:default_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.666667, -0.25, 0, 0.25, 0, 0.666667, -0.25, 0, 0.25, 0, 0.470588, -0.25, 0, 0.25, 0, 0.666667, -0.25, 0, 0.25, 0, 0.666667, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 1, 1.5, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:default_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.458824, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 1, 1.5, 2 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:default_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.568627, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.568627, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 1, 1.5, 2 )
+}
+
+[node name="ProjectMap" type="GraphEdit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 500, 500 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+right_disconnects = true
+snap_distance = 32
+zoom_min = 0.133
+zoom_step = 1.15
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+connections = {
+}
+
+[node name="MapSetting" parent="." instance=ExtResource( 1 )]
+margin_top = 48.0
+margin_right = 174.0
+margin_bottom = 576.0
+
+[node name="DEBUG" type="Label" parent="MapSetting"]
+visible = false
+margin_left = 6.0
+margin_top = 579.0
+margin_right = 408.0
+margin_bottom = 597.0
+mouse_filter = 1
+custom_fonts/font = SubResource( 6 )
+text = "{\"maps\":[],\"connections\":null}"
+autowrap = true
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 1
+default_color = Color( 1, 0.666667, 0.6, 1 )
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Line2D"]
+anims/RESET = SubResource( 4 )
+anims/blink = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enable = true
+
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -560.0
+margin_top = -288.0
+margin_right = 560.0
+margin_bottom = 288.0
+window_title = "ファイルを保存"
+resizable = true
+show_hidden_files = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="connection_request" from="." to="." method="_on_ProjectMap_connection_request"]
+[connection signal="delete_nodes_request" from="." to="." method="_on_GraphEdit_delete_nodes_request"]
+[connection signal="disconnection_request" from="." to="." method="_on_ProjectMap_disconnection_request"]
+[connection signal="exportjson" from="MapSetting" to="." method="_on_MapSetting_exportjson"]
+[connection signal="save" from="MapSetting" to="." method="_on_MapSetting_save"]
+[connection signal="file_selected" from="CanvasLayer/FileDialog" to="." method="_on_FileDialog_file_selected"]
