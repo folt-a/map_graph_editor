@@ -12,6 +12,8 @@ var resource_name
 var icon_class:String
 var script_path:String
 
+var is_map:bool = false
+
 func _ready():
 	
 	pass
@@ -69,7 +71,7 @@ func get_resource_info(resource_path):
 			var instance = resource.instance()
 			
 			# TODO Dynamic ClassName
-			if instance is Map:
+			if is_map:
 				$HB/Button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				resource_type = TYPE_MAP
 				icon_class = instance.get_class()

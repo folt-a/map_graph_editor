@@ -56,6 +56,7 @@ func set_selected(value):
 
 func init(path):
 	var nde_resource = main_resource
+	main_resource.is_map = true
 	nde_resource.init(path)
 	#store data to be saved
 	resource_type = nde_resource.resource_type
@@ -330,8 +331,10 @@ func _on_ReverseButton_pressed(reverse_btn:Button,port_num:int):
 		reverse_btn.icon = get_icon("MirrorX", "EditorIcons")
 
 func _on_TextureUpdateButton_pressed():
-	var node:Node = ResourceLoader.load(path).instance()
-	$ThumbnailCreator.create_thumbnail($VB/MapHeader/MC/VB/MapHeader_2/MapThumbnail,node,["TileMap","Sprite","Node2D","AnimatedSprite"])
+	var loaded_resource = ResourceLoader.load(path)
+	if loaded_resource is PackedScene:
+		var node:Node = loaded_resource.instance()
+		$ThumbnailCreator.create_thumbnail($VB/MapHeader/MC/VB/MapHeader_2/MapThumbnail,node,["TileMap","Sprite","Node2D","AnimatedSprite"])
 
 func _on_TscnJumpButton_pressed():
 	_on_resource_activated(main_resource)

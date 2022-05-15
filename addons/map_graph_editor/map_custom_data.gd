@@ -11,8 +11,6 @@ export(String) var custom_data_name = ""
 export(String) var custom_data_value = ""
 export(int) var custom_data_type = DATATYPE.STRING
 
-const ExchangedResourcePicker = preload("res://addons/map_graph_editor/imrp/src/scene/ImprovedResourcePicker.tscn")
-
 enum DATATYPE {STRING = 0,INT = 1,FLOAT = 2,REFFERENCE = 3}
 
 func _ready():

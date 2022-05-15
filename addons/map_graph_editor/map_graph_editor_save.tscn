@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://addons/map_graph_editor/map_setting.gd" type="Script" id=1]
-[ext_resource path="res://addons/map_graph_editor/fonts/ZenMaruGothic-Bold-Subset.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/map_graph_editor/pm_map_node.gd" type="Script" id=1]
+[ext_resource path="res://addons/map_graph_editor/map_setting.gd" type="Script" id=2]
+[ext_resource path="res://addons/map_graph_editor/fonts/ZenMaruGothic-Bold-Subset.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/map_graph_editor/map_graph_editor.gd" type="Script" id=4]
+[ext_resource path="res://addons/map_graph_editor/node_selected.stylebox" type="StyleBox" id=5]
+[ext_resource path="res://addons/map_graph_editor/pm_map_node.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/map_graph_editor/node.stylebox" type="StyleBox" id=7]
+[ext_resource path="res://addons/map_graph_editor/image/port.png" type="Texture" id=8]
 [ext_resource path="res://addons/map_graph_editor/map_setting.tscn" type="PackedScene" id=9]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -10,7 +15,7 @@ bg_color = Color( 0.2, 0.231373, 0.309804, 1 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 12
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -101,16 +106,15 @@ tracks/3/keys = {
 }
 
 [node name="ProjectMap" type="GraphEdit"]
-margin_right = 1958.0
+margin_right = 1883.0
 margin_bottom = 1014.0
 rect_min_size = Vector2( 500, 500 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/bg = SubResource( 1 )
 right_disconnects = true
-scroll_offset = Vector2( -362.87, -678.107 )
+scroll_offset = Vector2( -608, 366 )
 snap_distance = 32
-zoom = 0.933
 zoom_min = 0.133
 zoom_step = 1.15
 script = ExtResource( 4 )
@@ -129,7 +133,7 @@ custom_constants/margin_right = 12
 custom_constants/margin_top = 6
 custom_constants/margin_left = 6
 custom_constants/margin_bottom = 12
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -172,11 +176,174 @@ margin_bottom = 288.0
 window_title = "ファイルを保存"
 resizable = true
 show_hidden_files = true
-current_file = "maps.json"
-current_path = "res://maps.json"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FileNode" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 928.0
+margin_top = -526.0
+margin_right = 1152.0
+margin_bottom = -183.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 8 )
+custom_styles/frame = ExtResource( 7 )
+custom_styles/selectedframe = ExtResource( 5 )
+offset = Vector2( 320, -160 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"map": ""
+}
+path = "res://TileMap2.tscn"
+resource_type = 5
+icon_class = "TileMap"
+thumbnail_default_size = 120
+
+[node name="FileNode2" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 832.0
+margin_top = 18.0
+margin_right = 1056.0
+margin_bottom = 361.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 8 )
+custom_styles/frame = ExtResource( 7 )
+custom_styles/selectedframe = ExtResource( 5 )
+offset = Vector2( 224, 384 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"map": ""
+}
+path = "res://TileMap2.tscn"
+resource_type = 5
+icon_class = "TileMap"
+thumbnail_default_size = 120
+
+[node name="FileNode3" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 1312.0
+margin_top = 114.0
+margin_right = 1536.0
+margin_bottom = 457.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 8 )
+custom_styles/frame = ExtResource( 7 )
+custom_styles/selectedframe = ExtResource( 5 )
+offset = Vector2( 704, 480 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"map": ""
+}
+path = "res://TileMap.tscn"
+resource_type = 5
+icon_class = "TileMap"
+thumbnail_default_size = 120
+
+[node name="FileNode4" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 704.0
+margin_top = 562.0
+margin_right = 928.0
+margin_bottom = 905.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 8 )
+custom_styles/frame = ExtResource( 7 )
+custom_styles/selectedframe = ExtResource( 5 )
+offset = Vector2( 96, 928 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"map": ""
+}
+path = "res://Node2D.tscn"
+resource_type = 5
+icon_class = "Node2D"
+thumbnail_default_size = 120
+
+[node name="FileNode5" type="GraphNode" parent="." instance=ExtResource( 6 )]
+margin_left = 960.0
+margin_top = 498.0
+margin_right = 1184.0
+margin_bottom = 841.0
+mouse_filter = 1
+custom_constants/port_offset = -13
+custom_icons/port = ExtResource( 8 )
+custom_styles/frame = ExtResource( 7 )
+custom_styles/selectedframe = ExtResource( 5 )
+offset = Vector2( 352, 864 )
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color( 1, 1, 1, 1 )
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color( 1, 1, 1, 1 )
+slot/1/left_enabled = true
+slot/1/left_type = 1
+slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/right_enabled = true
+slot/1/right_type = 1
+slot/1/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"map": ""
+}
+path = "res://icon.png"
+resource_type = 6
+icon_class = "StreamTexture"
+thumbnail_default_size = 120
 
 [connection signal="connection_request" from="." to="." method="_on_ProjectMap_connection_request"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_GraphEdit_delete_nodes_request"]
